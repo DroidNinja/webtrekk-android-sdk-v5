@@ -69,7 +69,8 @@ buildscript {
             'googleServices'         : '4.3.3',
             'firebaseCrashlyticsGradle'   : '2.1.1',
             'firebaseCrashlytics'    : '17.0.1',
-            'firebaseAppDistribution': '2.0.1'
+            'firebaseAppDistribution': '2.0.1',
+            'kotlinLifecycle'        : '2.2.0'
     ]
 
     ext.libs = [
@@ -79,6 +80,7 @@ buildscript {
             constraintLayout      : "androidx.constraintlayout:constraintlayout:$versions.constraintLayoutVersion",
             coroutinesCore        : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinCoroutines",
             coroutinesAndroid     : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinCoroutines",
+            lifecycleKtx          : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.kotlinLifecycle",
             okHttp                : "com.squareup.okhttp3:okhttp:$versions.okHttpVersion",
             koinAndroid           : "io.insert-koin:koin-android:$versions.koinAndroidVersion",
             room                  : "androidx.room:room-runtime:$versions.roomVersion",

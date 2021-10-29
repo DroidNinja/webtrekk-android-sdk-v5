@@ -30,6 +30,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.appoxee.Appoxee
 import com.example.webtrekk.androidsdk.mapp.MainActivity
+import com.example.webtrekk.androidsdk.mapp.PageRequestsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import webtrekk.android.sdk.*
 
@@ -93,6 +94,11 @@ class MainActivity : AppCompatActivity() {
 
         button10.setOnClickListener {
             val intent = Intent(this, ObjectTrackingActivityExample::class.java)
+            startActivity(intent)
+        }
+
+        buttonTestPageRequest.setOnClickListener {
+            val intent = Intent(this, PageRequestsActivity::class.java)
             startActivity(intent)
         }
     }

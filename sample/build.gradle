@@ -73,7 +73,7 @@ android {
         minSdkVersion versions.minSdkVersion
         targetSdkVersion versions.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "DOMEIN", "\"" + getTrackDomain() + "\""
         buildConfigField "String", "TRACK_IDS", "\"" + getTrackIds() + "\""
@@ -105,6 +105,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlinVersion"
     implementation "androidx.appcompat:appcompat:$versions.appCompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayoutVersion"
+    implementation 'com.google.android.material:material:1.4.0'
     testImplementation "junit:junit:$versions.junitVersion"
     androidTestImplementation "androidx.test:runner:$versions.runnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCoreVersion"

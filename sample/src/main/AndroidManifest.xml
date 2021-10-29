@@ -16,7 +16,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".UrlActivity"/>
+        <activity
+            android:name=".mapp.PageRequestsActivity"
+            android:exported="true" />
+        <activity android:name=".UrlActivity" />
         <activity android:name=".MediaExample" />
         <activity android:name=".StandardVideoActivity" />
         <activity android:name=".MediaActivityExample" />

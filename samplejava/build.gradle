@@ -97,5 +97,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCoreVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinCoroutines"
     implementation "androidx.work:work-runtime:$versions.workManagerVersion"
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$versions.kotlinLifecycle")
     implementation(project(':android-sdk'))
 }
