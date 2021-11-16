@@ -1,5 +1,6 @@
 package com.example.webtrekk.androidsdk
 
+import android.os.Binder
 import android.os.Bundle
 
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.webtrekk.androidsdk.databinding.ActivityMedia2Binding
 import webtrekk.android.sdk.MediaParam
 import webtrekk.android.sdk.TrackingParams
 import webtrekk.android.sdk.Webtrekk
@@ -15,16 +17,18 @@ import webtrekk.android.sdk.Webtrekk
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
-import kotlinx.android.synthetic.main.activity_media2.*
 
 class MediaActivityExample : AppCompatActivity() {
+
+    lateinit var binding:ActivityMedia2Binding
+
     private var webtrekk: Webtrekk? = null
     val trackingParams = TrackingParams()
     private var currentState =
         "" // this variable stores the current state (play/pause/stop)
     private var timerService: ScheduledExecutorService? = null
     val currentPlayProgress: Int
-        get() = (MEDIA_LENGTH * (playProgressBar!!.progress / 100.0)).toInt()
+        get() = (MEDIA_LENGTH * (binding.playProgressBar.progress / 100.0)).toInt()
 
     private fun initMediaTracking() {
         // Tracker initialisieren
@@ -44,9 +48,12 @@ class MediaActivityExample : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding= ActivityMedia2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         webtrekk = Webtrekk.getInstance()
-        setContentView(R.layout.activity_media2)
-        playButton.setOnClickListener {
+
+        binding.playButton.setOnClickListener {
             initMediaTracking()
             val progress: Int = currentPlayProgress
             currentState = "play"
@@ -55,7 +62,7 @@ class MediaActivityExample : AppCompatActivity() {
             Webtrekk.getInstance().trackMedia("android-demo-media", trackingParams)
             startTimerService()
         }
-        pauseButton.setOnClickListener {
+        binding.pauseButton.setOnClickListener {
             val progress: Int = currentPlayProgress
             currentState = "pause"
             trackingParams[MediaParam.MEDIA_ACTION] = "pause"
@@ -63,7 +70,7 @@ class MediaActivityExample : AppCompatActivity() {
             Webtrekk.getInstance().trackMedia("android-demo-media", trackingParams)
             timerService?.shutdown()
         }
-        stopButton.setOnClickListener {
+        binding.stopButton.setOnClickListener {
             val progress: Int = currentPlayProgress
             currentState = "stop"
             trackingParams[MediaParam.MEDIA_ACTION] = "stop"
@@ -73,7 +80,7 @@ class MediaActivityExample : AppCompatActivity() {
         }
 
 
-        playProgressBar!!.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+        binding.playProgressBar!!.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 val progress: Int = currentPlayProgress
                 // replace the current tracked action of seekend with the state before seek began

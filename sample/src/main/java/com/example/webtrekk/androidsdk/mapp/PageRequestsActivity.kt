@@ -4,13 +4,9 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.webtrekk.androidsdk.BACKGROUND_COLOR
-import com.example.webtrekk.androidsdk.R
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_page_requests.*
-import kotlinx.android.synthetic.main.main.view.*
+import com.example.webtrekk.androidsdk.databinding.ActivityPageRequestsBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import webtrekk.android.sdk.Param
 import webtrekk.android.sdk.TrackingParams
@@ -20,11 +16,15 @@ import java.util.*
 class PageRequestsActivity : AppCompatActivity() {
 
     private val REQUEST_COUNT=10000
+    private lateinit var binding:ActivityPageRequestsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_page_requests)
+        binding= ActivityPageRequestsBinding.inflate(layoutInflater)
 
-        buttonSendRequests.setOnClickListener {
+        setContentView(binding.root)
+
+        binding.buttonSendRequests.setOnClickListener {
             resetUI()
             sendRequests()
         }
@@ -43,24 +43,24 @@ class PageRequestsActivity : AppCompatActivity() {
 
             for (i in 0..REQUEST_COUNT){
                 webtrekk.trackPage(this@PageRequestsActivity,"testAndroid${i}", trackingParams)
-                tvInfo.post {
-                    tvInfo.text="Current request sent: ${i}"
+                binding.tvInfo.post {
+                    binding.tvInfo.text="Current request sent: ${i}"
                 }
             }
 
             val endTime=System.currentTimeMillis();
             val secondsDuration : Double = ((endTime-startTime)/1000.0)
-            tvExecutionTime.text = "Time duration: ${String.format(Locale.US, "%.2f",secondsDuration)}"
+            binding.tvExecutionTime.text = "Time duration: ${String.format(Locale.US, "%.2f",secondsDuration)}"
 
-            buttonSendRequests.post {
-                buttonSendRequests.isEnabled=true
+            binding.buttonSendRequests.post {
+                binding.buttonSendRequests.isEnabled=true
             }
         }
     }
 
     private fun resetUI(){
-        buttonSendRequests.isEnabled=false
-        tvInfo.text=""
-        tvExecutionTime.text=""
+        binding.buttonSendRequests.isEnabled=false
+        binding.tvInfo.text=""
+        binding.tvExecutionTime.text=""
     }
 }

@@ -18,29 +18,31 @@
         tools:targetApi="m">
         <activity
             android:name=".mapp.PageRequestsActivity"
-            android:exported="true" />
-        <activity android:name=".UrlActivity" />
-        <activity android:name=".MediaExample" />
-        <activity android:name=".StandardVideoActivity" />
-        <activity android:name=".MediaActivityExample" />
-        <activity android:name=".VideoActivity" />
-        <activity android:name=".MainActivity">
+            android:exported="false" />
+        <activity android:name=".UrlActivity" android:exported="false"/>
+        <activity android:name=".MediaExample" android:exported="false"/>
+        <activity android:name=".StandardVideoActivity" android:exported="false"/>
+        <activity android:name=".MediaActivityExample" android:exported="false"/>
+        <activity android:name=".VideoActivity" android:exported="false"/>
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailsActivity" />
-        <activity android:name=".WebViewActivity" />
-        <activity android:name=".FormActivity" />
-        <activity android:name=".CrashActivity" />
-        <activity android:name=".SettingsExample" />
-        <activity android:name=".ObjectTrackingActivityExample" />
+        <activity android:name=".DetailsActivity" android:exported="false"/>
+        <activity android:name=".WebViewActivity" android:exported="false"/>
+        <activity android:name=".FormActivity" android:exported="false"/>
+        <activity android:name=".CrashActivity" android:exported="false"/>
+        <activity android:name=".SettingsExample" android:exported="false"/>
+        <activity android:name=".ObjectTrackingActivityExample" android:exported="false"/>
         <activity
             android:name=".mapp.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
+            android:exported="false"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="com.mapp.RICH_PUSH" />
@@ -50,7 +52,8 @@
                 <category android:name="${applicationId}" />
             </intent-filter>
         </activity>
-        <activity android:name=".mapp.SecondActivity">
+        <activity android:name=".mapp.SecondActivity"
+            android:exported="false">
             <intent-filter>
                 <data android:scheme="apx" />
                 <data android:host="deeplink" />
@@ -61,7 +64,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity> <!-- Deeplinking Start -->
-        <activity android:name=".mapp.DeepLinkActivity">
+        <activity android:name=".mapp.DeepLinkActivity"
+            android:exported="false">
             <intent-filter>
                 <data android:scheme="apx" />
                 <data android:host="deeplink" />
@@ -73,7 +77,8 @@
                 <category android:name="${applicationId}" />
             </intent-filter>
         </activity>
-        <activity android:name=".mapp.CustomDeeplinkActivity">
+        <activity android:name=".mapp.CustomDeeplinkActivity"
+            android:exported="false">
             <intent-filter>
                 <data android:scheme="apx" />
                 <data android:host="custom" />

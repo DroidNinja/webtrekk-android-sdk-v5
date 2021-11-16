@@ -1,26 +1,29 @@
 package com.example.webtrekk.androidsdk
 
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.os.PersistableBundle
 import android.widget.MediaController
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_standard_video.videoView
+import com.example.webtrekk.androidsdk.databinding.ActivityStandardVideoBinding
 import webtrekk.android.sdk.MediaParam
 import webtrekk.android.sdk.Webtrekk
 
 
 class StandardVideoActivity : AppCompatActivity() {
 
+    lateinit var binding:ActivityStandardVideoBinding
     private var myVideoView: TrackedVideoView? = null
     private var position = 0
     private var mediaControls: MediaController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_standard_video)
-        myVideoView = videoView
+        binding= ActivityStandardVideoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        myVideoView = binding.videoView
         mediaControls = MediaController(this)
         try {
             myVideoView!!.setMediaController(mediaControls)
@@ -42,17 +45,17 @@ class StandardVideoActivity : AppCompatActivity() {
 
     }
 
-
-    override fun onSaveInstanceState(savedInstanceState: Bundle) {
-        super.onSaveInstanceState(savedInstanceState)
-        savedInstanceState.putInt("Position", myVideoView!!.currentPosition)
-        myVideoView!!.pause()
+    @SuppressLint("MissingSuperCall")
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("Position", binding.videoView.currentPosition)
+        binding.videoView.pause()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         position = savedInstanceState.getInt("Position")
-        myVideoView!!.seekTo(position)
+        binding.videoView.seekTo(position)
     }
 
     override fun onStop() {

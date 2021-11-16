@@ -39,6 +39,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         versionName versions.webtrekkVersion
         setVersionName(versions.webtrekkVersion)
+        buildConfigField( "String", "VERSION_NAME", "\"${versions.webtrekkVersion}\"")
+        javaCompileOptions{
+            annotationProcessorOptions{
+                arguments+=[
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"
+                ]
+            }
+        }
     }
 
     lintOptions {
@@ -51,6 +60,10 @@ android {
         unitTests.all {
             useJUnitPlatform()
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

@@ -28,10 +28,9 @@ package com.example.webtrekk.androidsdk
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.appoxee.Appoxee
+import com.example.webtrekk.androidsdk.databinding.ActivityMainBinding
 import com.example.webtrekk.androidsdk.mapp.MainActivity
 import com.example.webtrekk.androidsdk.mapp.PageRequestsActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import webtrekk.android.sdk.*
 
 @TrackPageDetail(
@@ -40,9 +39,13 @@ import webtrekk.android.sdk.*
 )
 class MainActivity : AppCompatActivity() {
 
+    lateinit var binding:ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
 
 /*
         val stringIds = BuildConfig.TRACK_IDS
@@ -53,51 +56,51 @@ class MainActivity : AppCompatActivity() {
         Webtrekk.getInstance().init(this, webtrekkConfiguration)
 */
 
-        startDetailsActivity.setOnClickListener {
+        binding.startDetailsActivity.setOnClickListener {
             val intent = Intent(this, DetailsActivity::class.java)
             startActivity(intent)
         }
 
-        webViewActivity.setOnClickListener {
+        binding.webViewActivity.setOnClickListener {
             val intent = Intent(this, WebViewActivity::class.java)
             startActivity(intent)
         }
 
-        formActivity.setOnClickListener {
+        binding.formActivity.setOnClickListener {
             val intent = Intent(this, FormActivity::class.java)
             startActivity(intent)
         }
 
-        crashActivity.setOnClickListener {
+        binding.crashActivity.setOnClickListener {
             val intent = Intent(this, CrashActivity::class.java)
             startActivity(intent)
         }
 
-        videoActivity.setOnClickListener {
+        binding.videoActivity.setOnClickListener {
             val intent = Intent(this, MediaExample::class.java)
             startActivity(intent)
         }
 
-        button4.setOnClickListener {
+        binding.button4.setOnClickListener {
             val intent = Intent(this, SettingsExample::class.java)
             startActivity(intent)
         }
-        button5.setOnClickListener {
+        binding.button5.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        button6.setOnClickListener {
+        binding.button6.setOnClickListener {
             val intent = Intent(this, UrlActivity::class.java)
             startActivity(intent)
         }
 
-        button10.setOnClickListener {
+        binding.button10.setOnClickListener {
             val intent = Intent(this, ObjectTrackingActivityExample::class.java)
             startActivity(intent)
         }
 
-        buttonTestPageRequest.setOnClickListener {
+        binding.buttonTestPageRequest.setOnClickListener {
             val intent = Intent(this, PageRequestsActivity::class.java)
             startActivity(intent)
         }

@@ -2,8 +2,8 @@ package com.example.webtrekk.androidsdk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.webtrekk.androidsdk.databinding.ActivityObjectTrackingBinding
 
-import kotlinx.android.synthetic.main.activity_object_tracking.*
 import webtrekk.android.sdk.Webtrekk
 import webtrekk.android.sdk.events.ActionEvent
 import webtrekk.android.sdk.events.MediaEvent
@@ -17,42 +17,46 @@ import webtrekk.android.sdk.events.eventParams.SessionParameters
 import webtrekk.android.sdk.events.eventParams.UserCategories
 
 class ObjectTrackingActivityExample : AppCompatActivity() {
+
+    lateinit var binding:ActivityObjectTrackingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_object_tracking)
+        binding= ActivityObjectTrackingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        firstExample.setOnClickListener {
+        binding.firstExample.setOnClickListener {
             trackAction()
         }
 
-        secondExample.setOnClickListener {
+        binding.secondExample.setOnClickListener {
             trackCustomAction()
         }
 
-        example3.setOnClickListener {
+        binding.example3.setOnClickListener {
             trackGoal()
         }
-        example4.setOnClickListener {
+        binding.example4.setOnClickListener {
             trackEcommerceViewProduct()
         }
-        example5.setOnClickListener {
+        binding.example5.setOnClickListener {
             trackEcommerceAddedToBasket()
         }
-        example6.setOnClickListener {
+        binding.example6.setOnClickListener {
             trackEcommerceConfirmation()
         }
-        example7.setOnClickListener {
+        binding.example7.setOnClickListener {
             trackCustomPage()
         }
 
-        example8.setOnClickListener {
+        binding.example8.setOnClickListener {
             trackMedia1()
         }
-        example9.setOnClickListener {
+        binding.example9.setOnClickListener {
             ecommerceTracking()
         }
 
-        example10.setOnClickListener {
+        binding.example10.setOnClickListener {
             ecommerceTrackingTest2()
         }
 

@@ -89,12 +89,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlinVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlinVersion"
     implementation "androidx.appcompat:appcompat:$versions.appCompatVersion"
     implementation "androidx.constraintlayout:constraintlayout:$versions.constraintLayoutVersion"
-    testImplementation "junit:junit:$versions.junitVersion"
-    androidTestImplementation "androidx.test:runner:$versions.runnerVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCoreVersion"
+//    testImplementation "junit:junit:$versions.junitVersion"
+//    androidTestImplementation "androidx.test:runner:$versions.runnerVersion"
+//    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCoreVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinCoroutines"
     implementation "androidx.work:work-runtime:$versions.workManagerVersion"
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$versions.kotlinLifecycle")

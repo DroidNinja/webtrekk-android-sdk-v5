@@ -29,34 +29,34 @@ apply plugin: 'io.codearte.nexus-staging'
 buildscript {
     ext.versions = [
             'webtrekkVersion'        : '5.1.0',
-            'gradleVersion'          : '3.6.4',
-            'kotlinVersion'          : '1.3.71',
+            'gradleVersion'          : '7.0.0',
+            'kotlinVersion'          : '1.6.0',
             'gradleVersionsPlugin'   : '0.21.0',
             'mavenPluginVersion'     : '2.1',
             'bintrayPluginVersion'   : '1.8.4',
 
-            'compileSdkVersion'      : 30,
+            'compileSdkVersion'      : 31,
             'minSdkVersion'          : 21,
-            'targetSdkVersion'       : 30,
+            'targetSdkVersion'       : 31,
             'buildTools'             : '30.0.3',
 
-            'appCompatVersion'       : '1.2.0',
-            'constraintLayoutVersion': '2.0.4',
+            'appCompatVersion'       : '1.3.1',
+            'constraintLayoutVersion': '2.1.1',
 
-            'kotlinCoroutines'       : '1.3.1',
-            'coreKtxVersion'         : '1.1.0',
+            'kotlinCoroutines'       : '1.3.9',
+            'coreKtxVersion'         : '1.7.0',
             'koinAndroidVersion'     : '2.1.6',
 
-            'okHttpVersion'          : '4.2.2',
+            'okHttpVersion'          : '4.9.1',
 
-            'workManagerVersion'     : '2.2.0',
-            'roomVersion'            : '2.2.2',
+            'workManagerVersion'     : '2.7.0',
+            'roomVersion'            : '2.4.0-beta01',
 
             'testCoreVersion'        : '1.2.0',
             'testCoreVersionJunit'   : '1.1.1',
-            'junitVersion'           : '4.12',
-            'runnerVersion'          : '1.2.0',
-            'espressoCoreVersion'    : '3.2.0',
+            'junitVersion'           : '4.13.2',
+            'runnerVersion'          : '1.4.0',
+            'espressoCoreVersion'    : '3.4.0',
             //Version 2.1.0 depends on androidx.arch.core:core-runtime:2.1.0 which must be explicitly added in android-sdk gradle
             'coreTestingVersion'     : '2.0.0',
             //Downgraded version from 1.9.3 to 1.9.2 while this issue is not resolved
@@ -66,15 +66,15 @@ buildscript {
 
             'ktlintVersion'          : '0.31.0',
             'dokkaVersion'           : '0.9.17',
-            'googleServices'         : '4.3.3',
-            'firebaseCrashlyticsGradle'   : '2.1.1',
-            'firebaseCrashlytics'    : '17.0.1',
+            'googleServices'         : '4.3.10',
+            'firebaseCrashlyticsGradle'   : '2.8.0',
+            'firebaseCrashlytics'    : '18.2.4',
             'firebaseAppDistribution': '2.0.1',
-            'kotlinLifecycle'        : '2.2.0'
+            'kotlinLifecycle'        : '2.4.0'
     ]
 
     ext.libs = [
-            kotlinStdlib          : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlinVersion",
+            kotlinStdlib          : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlinVersion",
             appCompat             : "androidx.appcompat:appcompat:$versions.appCompatVersion",
             coreKtx               : "androidx.core:core-ktx:$versions.coreKtxVersion",
             constraintLayout      : "androidx.constraintlayout:constraintlayout:$versions.constraintLayoutVersion",

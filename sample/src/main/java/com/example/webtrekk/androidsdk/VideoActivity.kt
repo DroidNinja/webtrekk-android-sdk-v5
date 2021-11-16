@@ -1,5 +1,6 @@
 package com.example.webtrekk.androidsdk
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.database.ContentObserver
 import android.media.AudioManager
@@ -11,6 +12,7 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.webtrekk.androidsdk.databinding.ActivityVideoBinding
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.analytics.AnalyticsListener
 import com.google.android.exoplayer2.audio.AudioAttributes
@@ -27,7 +29,6 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.EventLogger
 import com.google.android.exoplayer2.util.Util
-import kotlinx.android.synthetic.main.activity_video.playerView
 import okhttp3.internal.userAgent
 import webtrekk.android.sdk.MediaParam
 import webtrekk.android.sdk.TrackingParams
@@ -37,6 +38,9 @@ import kotlin.math.max
 
 class VideoActivity : AppCompatActivity(), View.OnClickListener, PlaybackPreparer,
     PlayerControlView.VisibilityListener {
+
+    lateinit var binding:ActivityVideoBinding
+
     val TUNNELING_EXTRA = "tunneling"
     private val TAG = "VideoActivity"
     private var dataSourceFactory: DataSource.Factory? = null
@@ -125,9 +129,10 @@ class VideoActivity : AppCompatActivity(), View.OnClickListener, PlaybackPrepare
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_video)
-        playerView.setControllerVisibilityListener(this)
-        playerView.requestFocus()
+        binding= ActivityVideoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.playerView.setControllerVisibilityListener(this)
+        binding.playerView.requestFocus()
 
         val builder = ParametersBuilder( /* context= */this)
         val tunneling = intent.getBooleanExtra(
@@ -220,8 +225,8 @@ class VideoActivity : AppCompatActivity(), View.OnClickListener, PlaybackPrepare
 
                 }
             })
-            playerView.player = player
-            playerView.setPlaybackPreparer(this)
+            binding.playerView.player = player
+            binding.playerView.setPlaybackPreparer(this)
 
 
         }
@@ -240,9 +245,7 @@ class VideoActivity : AppCompatActivity(), View.OnClickListener, PlaybackPrepare
         super.onStart()
         if (Util.SDK_INT > 23) {
             initializePlayer()
-            if (playerView != null) {
-                playerView.onResume()
-            }
+            binding.playerView.onResume()
         }
     }
 
@@ -250,9 +253,7 @@ class VideoActivity : AppCompatActivity(), View.OnClickListener, PlaybackPrepare
         super.onResume()
         if (Util.SDK_INT <= 23 || player == null) {
             initializePlayer()
-            if (playerView != null) {
-                playerView.onResume()
-            }
+            binding.playerView.onResume()
         }
     }
 
@@ -266,9 +267,7 @@ class VideoActivity : AppCompatActivity(), View.OnClickListener, PlaybackPrepare
         )
         Webtrekk.getInstance().trackMedia("video name", trackingParams)
         if (Util.SDK_INT <= 23) {
-            if (playerView != null) {
-                playerView.onPause()
-            }
+            binding.playerView.onPause()
             releasePlayer()
         }
     }
@@ -276,9 +275,7 @@ class VideoActivity : AppCompatActivity(), View.OnClickListener, PlaybackPrepare
     override fun onStop() {
         super.onStop()
         if (Util.SDK_INT > 23) {
-            if (playerView != null) {
-                playerView.onPause()
-            }
+            binding.playerView.onPause()
             releasePlayer()
         }
     }
@@ -302,6 +299,7 @@ class VideoActivity : AppCompatActivity(), View.OnClickListener, PlaybackPrepare
 
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         updateTrackSelectorParameters()

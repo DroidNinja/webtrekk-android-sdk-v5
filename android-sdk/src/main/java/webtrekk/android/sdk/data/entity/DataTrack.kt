@@ -36,5 +36,5 @@ internal data class DataTrack(
     @Relation(
         parentColumn = "id",
         entityColumn = "track_id"
-    ) var customParams: List<CustomParam> = arrayListOf()
+    ) var customParams: List<CustomParam>
 )

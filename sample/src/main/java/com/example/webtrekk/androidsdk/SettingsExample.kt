@@ -2,24 +2,28 @@ package com.example.webtrekk.androidsdk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.webtrekk.androidsdk.databinding.SettingsActivityBinding
 
-import kotlinx.android.synthetic.main.settings_activity.*
 import webtrekk.android.sdk.Webtrekk
 
 class SettingsExample : AppCompatActivity() {
+    lateinit var binding:SettingsActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.settings_activity)
 
+        binding= SettingsActivityBinding.inflate(layoutInflater)
 
-        button.setOnClickListener {
+        setContentView(binding.root)
+
+        binding.button.setOnClickListener {
             val stringIds = BuildConfig.TRACK_IDS
             val domain = BuildConfig.DOMEIN
             val elements: List<String> = stringIds.split(",")
             Webtrekk.getInstance().setIdsAndDomain(elements, domain)
         }
 
-        button2.setOnClickListener {
+        binding.button2.setOnClickListener {
             Webtrekk.getInstance().setIdsAndDomain(
                 listOf("826582930668809"),
                 "http://vdestellaaccount01.wt-eu02.net"
@@ -27,7 +31,7 @@ class SettingsExample : AppCompatActivity() {
 
         }
 
-        button3.setOnClickListener {
+        binding.button3.setOnClickListener {
             val stringIds = BuildConfig.TRACK_IDS
             val domain = BuildConfig.DOMEIN
             var elements: MutableList<String> = stringIds.split(",").toMutableList()
@@ -36,15 +40,15 @@ class SettingsExample : AppCompatActivity() {
 
         }
 
-        enable_anonymous.setOnClickListener {
+        binding.enableAnonymous.setOnClickListener {
             Webtrekk.getInstance().anonymousTracking(true, setOf("la", "cs804", "cs821"), generateNewEverId = false)
         }
-        disable_anonymous.setOnClickListener {
+        binding.disableAnonymous.setOnClickListener {
             Webtrekk.getInstance().anonymousTracking(false, generateNewEverId = false)
         }
 
-        sw_optout.isChecked=Webtrekk.getInstance().hasOptOut()
-        sw_optout.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.swOptout.isChecked=Webtrekk.getInstance().hasOptOut()
+        binding.swOptout.setOnCheckedChangeListener { buttonView, isChecked ->
             Webtrekk.getInstance().optOut(isChecked)
         }
     }
