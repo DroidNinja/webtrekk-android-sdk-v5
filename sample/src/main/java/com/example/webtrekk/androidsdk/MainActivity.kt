@@ -31,19 +31,24 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.webtrekk.androidsdk.databinding.ActivityMainBinding
 import com.example.webtrekk.androidsdk.mapp.MainActivity
 import com.example.webtrekk.androidsdk.mapp.PageRequestsActivity
-import webtrekk.android.sdk.*
+import webtrekk.android.sdk.Param
+import webtrekk.android.sdk.TrackPageDetail
+import webtrekk.android.sdk.TrackParams
 
 @TrackPageDetail(
     contextName = "Main Page",
-    trackingParams = [TrackParams(paramKey = Param.PAGE_PARAMS.INTERNAL_SEARCH, paramVal = "search")]
+    trackingParams = [TrackParams(
+        paramKey = Param.PAGE_PARAMS.INTERNAL_SEARCH,
+        paramVal = "search"
+    )]
 )
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding:ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
@@ -58,6 +63,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.startDetailsActivity.setOnClickListener {
             val intent = Intent(this, DetailsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.startDetailsActivityCustomTracking.setOnClickListener {
+            val intent = Intent(this, DetailsActivity::class.java)
+            intent.putExtra(DetailsActivity.CUSTOM_TRACKING_ENABLED, true)
             startActivity(intent)
         }
 

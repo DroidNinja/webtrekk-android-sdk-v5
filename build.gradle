@@ -29,7 +29,7 @@ apply plugin: 'io.codearte.nexus-staging'
 buildscript {
     ext.versions = [
             'webtrekkVersion'        : '5.1.0',
-            'gradleVersion'          : '7.0.0',
+            'gradleVersion'          : '7.0.3',
             'kotlinVersion'          : '1.6.0',
             'gradleVersionsPlugin'   : '0.21.0',
             'mavenPluginVersion'     : '2.1',
@@ -69,7 +69,7 @@ buildscript {
             'googleServices'         : '4.3.10',
             'firebaseCrashlyticsGradle'   : '2.8.0',
             'firebaseCrashlytics'    : '18.2.4',
-            'firebaseAppDistribution': '2.0.1',
+            'firebaseAppDistribution': '2.1.1',
             'kotlinLifecycle'        : '2.4.0'
     ]
 

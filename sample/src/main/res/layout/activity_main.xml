@@ -23,117 +23,88 @@
   ~
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:keepScreenOn="true"
+    android:layout_height="match_parent">
 
-    tools:context=".MainActivity">
-
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Url Trackign"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:keepScreenOn="true"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/videoActivity" />
+        <Button
+            android:id="@+id/startDetailsActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_activity" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Integration"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        <Button
+            android:id="@+id/startDetailsActivityCustomTracking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details_activity_custom_tracking" />
 
-    <Button
-        android:id="@+id/videoActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Media Tracking"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/crashActivity" />
+        <Button
+            android:id="@+id/webViewActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/web_view_activity" />
 
-    <Button
-        android:id="@+id/startDetailsActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/details_activity"
-        app:layout_constraintBottom_toTopOf="@+id/webViewActivity"
-        app:layout_constraintEnd_toEndOf="@+id/webViewActivity"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/webViewActivity"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/formActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/form_activity" />
 
-    <Button
-        android:id="@+id/crashActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Crash Activity"
-        app:layout_constraintBottom_toTopOf="@+id/videoActivity"
-        app:layout_constraintEnd_toEndOf="@+id/videoActivity"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/videoActivity"
-        app:layout_constraintTop_toBottomOf="@+id/formActivity" />
+        <Button
+            android:id="@+id/crashActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crash_activity" />
 
-    <Button
-        android:id="@+id/webViewActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/web_view_activity"
-        app:layout_constraintBottom_toTopOf="@+id/formActivity"
-        app:layout_constraintEnd_toEndOf="@+id/formActivity"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/formActivity"
-        app:layout_constraintTop_toBottomOf="@+id/startDetailsActivity" />
+        <Button
+            android:id="@+id/videoActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/media_tracking" />
 
-    <Button
-        android:id="@+id/formActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Form Activity"
-        app:layout_constraintBottom_toTopOf="@+id/crashActivity"
-        app:layout_constraintEnd_toEndOf="@+id/crashActivity"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/crashActivity"
-        app:layout_constraintTop_toBottomOf="@+id/webViewActivity" />
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings" />
 
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Object tracking"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/url_tracking" />
 
-    <Button
-        android:id="@+id/buttonTestPageRequest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test Page Request 10k"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/integration" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/object_tracking" />
+
+        <Button
+            android:id="@+id/buttonTestPageRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_page_request_10k" />
+
+    </LinearLayout>
+</ScrollView>

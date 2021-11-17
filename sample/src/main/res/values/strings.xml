@@ -85,6 +85,15 @@
     <string name="keys">Keys</string>
     <string name="get_custom_attributes_from_server">Get Custom Attributes from Server</string>
     <string name="get_alias_from_server">Get Alias from Server</string>
+    <string name="details_activity_custom_tracking">Details Activity + Custom tracking</string>
+    <string name="form_activity">Form Activity</string>
+    <string name="crash_activity">Crash Activity</string>
+    <string name="media_tracking">Media Tracking</string>
+    <string name="settings">Settings</string>
+    <string name="url_tracking">Url Tracking</string>
+    <string name="integration">Integration</string>
+    <string name="object_tracking">Object tracking</string>
+    <string name="test_page_request_10k">Test Page Request 10k</string>
 
     <string-array name="screen_orientation">
         <item>Screen orientation portrait</item>

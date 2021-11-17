@@ -28,11 +28,15 @@ package com.example.webtrekk.androidsdk
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import webtrekk.android.sdk.FormTrackingSettings
-import webtrekk.android.sdk.Webtrekk
 import webtrekk.android.sdk.Param
 import webtrekk.android.sdk.TrackingParams
+import webtrekk.android.sdk.Webtrekk
 
 class DetailsActivity : AppCompatActivity() {
+
+    companion object {
+        val CUSTOM_TRACKING_ENABLED = "custom_tracking_enabled"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +50,11 @@ class DetailsActivity : AppCompatActivity() {
             )
         )
 
-        Webtrekk.getInstance().trackCustomEvent("Second page", trackingParams)
-        Webtrekk.getInstance().formTracking(this, formTrackingSettings = FormTrackingSettings())
+        val customTrackingEnabled = intent.getBooleanExtra(CUSTOM_TRACKING_ENABLED, false)
+
+        if (customTrackingEnabled) {
+            Webtrekk.getInstance().trackCustomEvent("Second page", trackingParams)
+            Webtrekk.getInstance().formTracking(this, formTrackingSettings = FormTrackingSettings())
+        }
     }
 }
